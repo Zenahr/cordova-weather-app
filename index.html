@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:200,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="master text-white">
+      <div class="city-field-wrapper">
+        <div class="card city-field col-6">
+          <form>
+            <input
+              type="text"
+              class="my-form city-form text-center"
+              name=""
+              id="city"
+              value="2950157"
+              placeholder="Berlin"
+            />
+          </form>
+          <div class="weather-button btn btn-primary btn-large my-button" onclick="fetch();">
+            Check The Weather
+          </div>
+        </div>
+      </div>
+      <div class="data-field-wrapper text-white">
+        <div class="card data-field col-6">
+            <div>Temperature: <span id="temperature"></span></div>
+            <div>Feels Like: <span id="feels_like"></span></div>
+            <div>Humidity: <span id="humidity"></span></div>
+            <div>Clouds: <span id="clouds"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+        function fetch() {
+
+            console.log("checking the weather")
+            fields = {
+                city: document.getElementById('city').value,
+                temperature : document.getElementById('temperature'),
+                feels_like : document.getElementById('feels_like'),
+                humidity : document.getElementById('humidity'),
+                clouds : document.getElementById('clouds')
+            }
+            console.log(fields.city)
+        const Http = new XMLHttpRequest();
+
+        // DEBUG ONLY
+        const city_id = 2950157;
+
+        // const id = fields.city
+        const id = city_id
+        const api_key = 'd0c4e64bb6c7af362dbb4ef8bddc0b52'
+        const url='https://api.openweathermap.org/data/2.5/weather?id=' + id + '&APPID=' + api_key;
+        Http.open("GET", url);
+        Http.send();
+        
+        Http.onreadystatechange = (e) => {
+            const data = JSON.parse(Http.responseText);
+
+            
+
+            (function () {
+                console.log("settings values");
+                fields.temperature.innerHTML = data["main"]["temp"]
+                fields.feels_like.innerHTML = data['main']['feels_like'];
+                fields.humidity.innerHTML = data['main']['humidity'];
+                fields.clouds.innerHTML = data['clouds']['all'] + '%';
+
+        })();
+        }
+           
+        }
+    </script>
+  
+  </body>
+</html>

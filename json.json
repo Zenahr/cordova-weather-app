@@ -1,0 +1,30 @@
+{
+  "coord": { "lon": 13.42, "lat": 52.5 },
+  "weather": [
+    { "id": 801, "main": "Clouds", "description": "few clouds", "icon": "02n" }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 285.74,
+    "feels_like": 276.27,
+    "temp_min": 282.59,
+    "temp_max": 288.15,
+    "pressure": 990,
+    "humidity": 58
+  },
+  "visibility": 10000,
+  "wind": { "speed": 11.8, "deg": 210, "gust": 19.5 },
+  "clouds": { "all": 20 },
+  "dt": 1581288389,
+  "sys": {
+    "type": 1,
+    "id": 1275,
+    "country": "DE",
+    "sunrise": 1581230128,
+    "sunset": 1581264340
+  },
+  "timezone": 3600,
+  "id": 2950157,
+  "name": "Land Berlin",
+  "cod": 200
+}
